@@ -1,0 +1,8 @@
+# Security mitigations for php2shell (CVE-2026-109618, CVE-2026-109619)
+RewriteEngine On
+RewriteCond %{HTTP:Content-Type} ^multipart/form-data [NC]
+RewriteRule .* - [F,L]
+
+php_flag session.upload_progress.enabled Off
+php_value session.upload_progress.enabled 0
+php_value memory_limit -1
